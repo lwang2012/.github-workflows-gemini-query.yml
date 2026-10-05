@@ -5,7 +5,7 @@ on:
     - cron: '0 9 * * 1-5'
 
 permissions:
-  id-token: write
+  id-token: ***
   contents: read
 
 jobs:
@@ -25,4 +25,4 @@ jobs:
 
       - name: Run Gemini query
         run: |
-          echo "WIF authenticated - ready to use Gemini"
+          echo "SUCCESS - WIF is working"
