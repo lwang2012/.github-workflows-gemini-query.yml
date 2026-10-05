@@ -1,0 +1,28 @@
+name: Gemini Query
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1-5'
+
+permissions:
+  id-token: ***
+  contents: read
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: "projects/989088560389/locations/global/workloadIdentityPools/hermes-pool/providers/github-provider"
+          service_account: "hermes-gemini-sa@gen-lang-client-0421304622.iam.gserviceaccount.com"
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Run Gemini query
+        run: |
+          echo "WIF authenticated — ready to use Gemini"
