@@ -1,12 +1,6 @@
 name: Gemini Query
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 9 * * 1-5'
-
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   query:
